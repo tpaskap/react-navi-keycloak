@@ -1,0 +1,48 @@
+Sources mofifiées de
+
+https://github.com/react-keycloak/react-keycloak-examples.git
+examples/react-navi
+
+# Config keycloak
+
+
+## Add Realm 
+http://localhost:8080/
+create realm : keycloak-react-auth
+
+## Add user in realm keycloak-react-auth
+user : laurent
+paswword : aaaaaa
+
+Check user acces
+http://localhost:8080/auth/realms/keycloak-react-auth/account/#/laurent
+
+## Add Client as admin 
+Client ID : React-auth
+Client Protocol : openid-connect
+Root URL : http://localhost:3000
+
+
+Valid Redirect URIs : *
+
+Master > Clients > keycloak-react-auth-realm > Installation
+Format Option : keycloak OIDC JSON
+Download
+
+
+Remarquable:
+
+public/keycloak.json
+
+const keycloak = Keycloak("./keycloak.json");
+
+code react js keycloak version 15.2 expiration 20 minutes stoke le token dans un cookie de session
+
+
+dans src/App.js
+const keycloakProviderInitConfig = {
+  onLoad: 'check-sso',         // On laisse apparaitre le bouton login
+  // onLoad: 'login-required', // On automatiquement logge sur keycloak
+}
+
+

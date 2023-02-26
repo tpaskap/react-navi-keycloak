@@ -1,0 +1,9 @@
+{
+    "clientId": "React-auth",
+  "realm": "keycloak-react-auth",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "React-auth",
+  "public-client": true,
+  "confidential-port": 0
+}
