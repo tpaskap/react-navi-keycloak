@@ -3,21 +3,29 @@ Sources mofifiées de
 https://github.com/react-keycloak/react-keycloak-examples.git
 examples/react-navi
 
+
+# Lancement keycloak
+
+docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:15.0.2
+
 # Config keycloak
 
 
-## Add Realm 
+## Add Realm
+
 http://localhost:8080/
 create realm : keycloak-react-auth
 
 ## Add user in realm keycloak-react-auth
+
 user : laurent
 paswword : aaaaaa
 
 Check user acces
 http://localhost:8080/auth/realms/keycloak-react-auth/account/#/laurent
 
-## Add Client as admin 
+## Add Client as admin
+
 Client ID : React-auth
 Client Protocol : openid-connect
 Root URL : http://localhost:3000
@@ -30,7 +38,7 @@ Format Option : keycloak OIDC JSON
 Download
 
 
-Remarquable:
+## Remarquable
 
 public/keycloak.json
 
@@ -44,5 +52,3 @@ const keycloakProviderInitConfig = {
   onLoad: 'check-sso',         // On laisse apparaitre le bouton login
   // onLoad: 'login-required', // On automatiquement logge sur keycloak
 }
-
-

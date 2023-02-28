@@ -1,5 +1,27 @@
 
-import React, { useEffect } from 'react';
+// Ce code est un composant React qui rend une application Web et utilise la bibliothèque
+//  keycloak-js pour l'authentification.
+
+// La première chose que le code fait est d'importer React et les bibliothèques nécessaires, 
+// notamment keycloak-js et @react-keycloak/web.
+
+// Ensuite, il initialise une instance de Keycloak avec les informations fournies 
+// dans le fichier JSON keycloak.json. Cette instance est ensuite utilisée pour initialiser 
+// le KeycloakProvider à l'aide de KeycloakProvider de la bibliothèque @react-keycloak/web.
+
+// La constante keycloakProviderInitConfig définit les paramètres d'initialisation pour 
+// le KeycloakProvider, notamment la stratégie d'authentification utilisée (check-sso dans ce cas).
+
+// Le composant App retourne ensuite le KeycloakProvider, qui englobe le composant AppRouter, 
+// lequel gère les routes de l'application.
+
+// Le KeycloakProvider permet la communication entre les composants de l'application et 
+// l'instance de Keycloak. Les fonctions onKeycloakEvent et onKeycloakTokens sont appelées pour 
+// gérer les événements Keycloak lorsqu'ils se produisent.
+
+// Enfin, le composant App est exporté pour être utilisé dans d'autres parties de l'application.
+
+import React from 'react';
 import Keycloak from 'keycloak-js'
 import { KeycloakProvider } from '@react-keycloak/web'
 
@@ -11,52 +33,7 @@ const keycloakProviderInitConfig = {
   onLoad: 'check-sso',
 }
 
-// Ce code est un exemple d'utilisation de KeycloakProvider dans une application ReactJS.
-
-// Tout d'abord, la classe App hérite de la classe PureComponent de React.
-
-// La méthode onKeycloakEvent est définie pour gérer les événements Keycloak, tels que la connexion et la déconnexion de l'utilisateur.
-
-// La méthode onKeycloakTokens est définie pour gérer les tokens Keycloak, tels que les tokens d'accès et de rafraîchissement.
-
-// Dans la méthode render, le composant KeycloakProvider est utilisé pour fournir le contexte Keycloak à l'application. Les propriétés suivantes sont passées à KeycloakProvider:
-
-// keycloak: l'instance Keycloak créée précédemment.
-// initConfig: la configuration d'initialisation Keycloak.
-// onEvent: la méthode onKeycloakEvent définie précédemment pour gérer les événements Keycloak.
-// onTokens: la méthode onKeycloakTokens définie précédemment pour gérer les tokens Keycloak.
-// Le composant AppRouter est utilisé comme enfant de KeycloakProvider pour définir la navigation de l'application.
-//     Il est important de noter que le code présenté ne montre pas comment créer et configurer l'instance Keycloak utilisée dans l'exemple. Cela doit être fait en amont dans le code, avant d'utiliser KeycloakProvider.
-
-// class App extends React.PureComponent {
-//   onKeycloakEvent = (event, error) => {
-//     console.log('onKeycloakEvent', event, error)
-//   }
-
-//   onKeycloakTokens = (tokens) => {
-//     console.log('onKeycloakTokens', tokens)
-//   }
-
-//   render() {
-//     return (
-//       <KeycloakProvider
-//         keycloak={keycloak}
-//         initConfig={keycloakProviderInitConfig}
-//         onEvent={this.onKeycloakEvent}
-//         onTokens={this.onKeycloakTokens}
-//       >
-//         <AppRouter />
-//       </KeycloakProvider>
-//     )
-//   }
-// }
-
-
 const App = () => {
-
-  useEffect(() => {
-    // Code pour initialiser Keycloak
-  }, []);
 
   const onKeycloakEvent = (event, error) => {
     console.log('onKeycloakEvent', event, error);
@@ -68,10 +45,10 @@ const App = () => {
 
   return (
     <KeycloakProvider
-	keycloak={keycloak}
-        initConfig={keycloakProviderInitConfig}
+      keycloak={keycloak}
+      initConfig={keycloakProviderInitConfig}
 
-	// initConfig={{}} // Config d'initialisation Keycloak
+      // initConfig={{}} // Config d'initialisation Keycloak
       onEvent={onKeycloakEvent}
       onTokens={onKeycloakTokens}
     >
