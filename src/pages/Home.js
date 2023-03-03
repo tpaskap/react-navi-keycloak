@@ -63,8 +63,8 @@ const HomePage = () => {
     <>
 
       <div>
-        User: {keycloak.tokenParsed.name} is {!keycloak.authenticated ? 'NOT ' : ''} authenticated
-        <p>Votre session expire le {expirationString}.</p>
+          User: {keycloak.tokenParsed.name} is {!keycloak.authenticated ? 'NOT ' : ''} authenticated
+          <p>Refresh du token: {expirationString}</p>
         <p>
           {!!keycloak.authenticated && (
             <button type="button" onClick={() => keycloak.logout()}>

@@ -6,10 +6,25 @@ examples/react-navi
 
 # Lancement keycloak
 
-docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:15.0.2
+## First time
+docker run -v $PWD/keycloak_data:/opt/jboss/keycloak/standalone/data/ -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:15.0.2
+
+## After
+docker run -v $PWD/keycloak_data:/opt/jboss/keycloak/standalone/data/ -p 8080:8080 quay.io/keycloak/keycloak:15.0.2
+
+http://localhost:8080/
+
+cd tools && docker build -t my-nodejs .
+
+docker run -it --rm -v $PWD:/tmp -w /tmp my-nodejs /bin/sh
+su node
+npm i
+exit
+exit
+
+docker run -p 3000:3000 -it --rm -v $PWD:/tmp -w /tmp my-nodejs npm start
 
 # Config keycloak
-
 
 ## Add Realm
 
